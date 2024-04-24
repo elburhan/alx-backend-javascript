@@ -1,17 +1,10 @@
-import getFullResponseFromAPI from './1-promise';
-
-getFullResponseFromAPI(true)
-  .then(response => {
-    console.log(response);
-  })
-  .catch(error => {
-    console.error(error);
+export default function getFullResponseFromAPI(success) {
+  const arr = new Promise((resolve, reject) => {
+    if (success) {
+      resolve({ status: 200, body: 'Success' });
+    } else {
+      reject(new Error('The fake API is not working currently'));
+    }
   });
-
-getFullResponseFromAPI(false)
-  .then(response => {
-    console.log(response);
-  })
-  .catch(error => {
-    console.error(error);
-  });
+  return arr;
+}
